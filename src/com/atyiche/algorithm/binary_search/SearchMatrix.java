@@ -1,4 +1,4 @@
-package com.atyiche.algorithm.arrays.binary_search;
+package com.atyiche.algorithm.binary_search;
 
 /**
  * @author liangyt

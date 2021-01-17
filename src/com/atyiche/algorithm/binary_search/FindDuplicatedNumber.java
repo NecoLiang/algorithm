@@ -1,6 +1,5 @@
-package com.atyiche.algorithm.arrays.binary_search;
+package com.atyiche.algorithm.binary_search;
 
-import javax.sound.midi.Soundbank;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
