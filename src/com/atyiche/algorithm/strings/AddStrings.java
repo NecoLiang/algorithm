@@ -18,7 +18,7 @@ public class AddStrings {
         while (i >= 0 || j >= 0 || carry !=0){
             //取两数当前的对应数位
             int n1 = i >= 0 ? num1.charAt(i) - '0' : 0;//字符要将ascii码转换为数字
-            int n2 = j >= 0 ? num1.charAt(j) - '0' : 0;
+            int n2 = j >= 0 ? num2.charAt(j) - '0' : 0;
             int sum = n1 + n2 + carry;
 
             //sum的个位保存到结果中，十位作为进位保存下来
