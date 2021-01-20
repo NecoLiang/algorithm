@@ -58,7 +58,7 @@ public class SlidingWindowMaximum {
     }
 
     //方法三：使用双向队列
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public int[] maxSlidingWindow3(int[] nums, int k) {
         //定义一个结果数组
         int[] result = new int[nums.length - k + 1];
         //定义双向队列,保存元素的索引
@@ -83,6 +83,37 @@ public class SlidingWindowMaximum {
             //保存结果
             result[i - k + 1] = nums[deque.getFirst()];
         }
+        return result;
+    }
+
+    //方法四：左右扫描
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        //定义一个结果数组
+        int[] result = new int[n - k + 1];
+        //定义存放块内最大值的left和right数组
+        int[] left = new int[n];
+        int[] right = new int[n];
+        for (int i = 0; i < n; i++) {
+            //1.从左到右
+            if (i % k == 0){
+                //如果能整除k，就是块的起始位置
+                left[i] = nums[i];
+            }else {
+                left[i] = Math.max(left[i-1], nums[i]);
+            }
+            //2.从右到左
+            int j = n - i -1; //j就是倒数的i
+            if (j % k == k - 1 || j == n - 1 ){
+                right[j] = nums[j];
+            }else{
+                right[j] = Math.max(right[j+1], nums[j]);
+            }
+        }
+            //对每个窗口计算最大值
+            for (int l = 0; l < n - k + 1; l++) {
+                result[l] = Math.max(right[l],left[l + k - 1]);
+            }
         return result;
     }
     public static void main(String[] args) {
