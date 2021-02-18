@@ -25,7 +25,7 @@ public class RemoveNthNodeFromEnd {
     }
 
     //方法二：使用栈（先进后出）
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
         //定义一个哨兵节点，next指向头节点
         ListNode sentinel = new ListNode(-1,head);
         ListNode curr = sentinel;
@@ -42,6 +42,30 @@ public class RemoveNthNodeFromEnd {
             stack.pop();
         }
         stack.peek().next = stack.peek().next.next;
+        return sentinel.next;
+    }
+
+    //方法三：双指针
+    public  ListNode removeNthFromEnd(ListNode head, int n) {
+        // 定义一个哨兵节点，next指向头节点
+        ListNode sentinel = new ListNode(-1, head);
+
+        // 定义前后双指针
+        ListNode first = sentinel, second = sentinel;
+
+        // 1. first先走n+1步
+        for (int i = 0; i < n + 1; i++)
+            first = first.next;
+
+        // 2. first、second同时前进，当first变为null，second就是倒数第n+1个节点
+        while (first != null){
+            first = first.next;
+            second = second.next;
+        }
+
+        // 3. 删除倒数第n个节点
+        second.next = second.next.next;
+
         return sentinel.next;
     }
     // 定义一个获取链表长度的方法
