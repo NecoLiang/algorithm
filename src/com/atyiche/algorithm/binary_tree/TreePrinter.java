@@ -1,5 +1,8 @@
 package com.atyiche.algorithm.binary_tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author liangyt
  * @create 2021-02-24 14:37
@@ -29,9 +32,25 @@ public class TreePrinter {
         System.out.print(root.val + "\t");
     }
 
+    //前序中序后序——DFS深度优先搜索
+    //层序遍历——BFS广度优先搜索
+    public static void printTreeLevelOrder( TreeNode root ) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
 
+            TreeNode curNode = queue.poll();
+            System.out.print(curNode.val + "\t");
 
-    public static void main(String[] args) {
+            if (curNode.left != null)
+                queue.offer(curNode.left);
+            if (curNode.right != null)
+                queue.offer(curNode.right);
+        }
+
+    }
+
+        public static void main(String[] args) {
         TreeNode treeNode1 = new TreeNode(1);
         TreeNode treeNode2 = new TreeNode(2);
         TreeNode treeNode3 = new TreeNode(3);
@@ -51,5 +70,7 @@ public class TreePrinter {
         printTreeInOrder(treeNode1);
         System.out.println();
         printTreePostOrder(treeNode1);
+        System.out.println();
+        printTreeLevelOrder(treeNode1);
     }
 }
