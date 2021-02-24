@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author liangyt
  * @create 2021-02-23 16:23
  */
-public class sortColors {
+public class SortColors {
     //方法一：内置培训
     public void sortColors1(int[] nums) {
         Arrays.sort(nums);
@@ -66,7 +66,7 @@ public class sortColors {
     }
     public static void main(String[] args) {
         int[] nums = {2,0,2,1,1,0};
-        sortColors sortColors = new sortColors();
+        SortColors sortColors = new SortColors();
         sortColors.sortColors(nums);
         QuickSort.printArray(nums);
     }
